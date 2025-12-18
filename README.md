@@ -45,7 +45,7 @@ src/
 │   ├── auth/
 │   ├── user/
 │   ├── driver/
-│   ├── rider/
+│   ├── ride/
 ├── middlewares/
 ├── config/
 ├── utils/
