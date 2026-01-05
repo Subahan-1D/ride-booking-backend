@@ -24,6 +24,8 @@ const credentialsLogin = async (payload: Partial<IUser>) => {
   };
 };
 
+
+// user - login ( token  - role ,_id)
 export const AuthServices = {
   credentialsLogin,
 };
