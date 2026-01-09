@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { envVars } from "../../config/env";
 import AppError from "../../errorHelpers/AppError";
 import { generateToken } from "../../utils/jwt";
@@ -26,9 +27,24 @@ const credentialsLogin = async (payload: Partial<IUser>) => {
     email: isUserExists.email,
     role: isUserExists.role,
   };
-  const accessToken = generateToken(jwtPayload, envVars.JWT_ACCESS_SECRET , envVars.JWT_REFRESH_EXPIRES )
+  const accessToken = generateToken(
+    jwtPayload,
+    envVars.JWT_ACCESS_SECRET,
+    envVars.JWT_ACCESS_EXPIRED
+  );
+
+  const refreshToken = generateToken(
+    jwtPayload,
+    envVars.JWT_REFRESH_SECRET,
+    envVars.JWT_REFRESH_EXPIRES
+  );
+
+  const { password: pass, ...rest } = isUserExists;
+
   return {
     accessToken,
+    refreshToken,
+    user: rest,
   };
 };
 
