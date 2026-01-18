@@ -127,7 +127,7 @@ passport.use(
             name: profile.displayName,
             picture: profile.photos?.[0].value,
             role: Role.RIDER,
-            isVerified: true, 
+            isVerified: true,  
             auths: [
               {
                 provider: "google",
