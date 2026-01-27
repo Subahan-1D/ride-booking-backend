@@ -1,7 +1,5 @@
-
-
+// user.interface.ts
 import { Types } from "mongoose";
-
 
 export enum Role {
   SUPER_ADMIN = "SUPER_ADMIN",
@@ -9,7 +7,6 @@ export enum Role {
   RIDER = "RIDER",
   DRIVER = "DRIVER",
 }
-
 
 export interface IAuthProvider {
   provider: "google" | "credentials";
@@ -21,7 +18,6 @@ export enum IsActive {
   BLOCKED = "BLOCK",
   SUSPENDED = "SUSPENDED",
 }
-
 
 export interface IUser {
   _id?: Types.ObjectId;

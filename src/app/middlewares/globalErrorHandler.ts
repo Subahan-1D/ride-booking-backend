@@ -9,17 +9,17 @@ import { handleDuplicateError } from "../helpers/handleDuplicateError";
 import { handleCastError } from "../helpers/handleCastError";
 import { handleZodError } from "../helpers/handleZodError";
 import { handleValidationError } from "../helpers/handleValidationError";
-
 // import AppError from "../errorHelpers/AppError";
 
 export const globalErrorHandler = async (
   err: any,
   req: Request,
   res: Response,
-  next: NextFunction
+  next: NextFunction,
 ) => {
   if (envVars.NODE_ENV === "development") {
-    console.log(err);
+    console.error("🔴 Error Name:", err?.name);
+    console.error("🔴 Error Message:", err?.message);
   }
 
   // console.log({ file: req.files });

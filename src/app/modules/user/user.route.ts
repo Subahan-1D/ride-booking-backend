@@ -1,28 +1,34 @@
+// user.route.ts
 import { Router } from "express";
-import { UserController } from "./user.controller";
 import { validateRequest } from "../../middlewares/validateRequest";
 import { createUserZodSchema, updateUserZodSchema } from "./user.validation";
-
+import { UserControllers } from "./user.controller";
 import { checkAuth } from "../../middlewares/checkAuth";
 import { Role } from "./user.interface";
+
 const router = Router();
 
 router.post(
   "/register",
   validateRequest(createUserZodSchema),
-  UserController.createUser
+  UserControllers.createUser
 );
 router.get(
   "/all-users",
   checkAuth(Role.ADMIN, Role.SUPER_ADMIN),
-  UserController.getAllUsers
+  UserControllers.getAllUsers
 );
-
+router.get("/me", checkAuth(...Object.values(Role)), UserControllers.getMe);
+router.get(
+  "/:id",
+  checkAuth(Role.ADMIN, Role.SUPER_ADMIN),
+  UserControllers.getSingleUser
+);
 router.patch(
   "/:id",
-  validateRequest(updateUserZodSchema), 
+  validateRequest(updateUserZodSchema),
   checkAuth(...Object.values(Role)),
-  UserController.updateUser
+  UserControllers.updateUser
 );
 
 export const UserRoutes = router;

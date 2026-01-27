@@ -1,19 +1,30 @@
 import { NextFunction, Request, Response, Router } from "express";
-import { AuthController } from "./auth.controller";
-import { Role } from "../user/user.interface";
-import { checkAuth } from "../../middlewares/checkAuth";
+import { AuthControllers } from "./auth.controller";
 import passport from "passport";
 import { envVars } from "../../config/env";
+import { checkAuth } from "../../middlewares/checkAuth";
+import { Role } from "../user/user.interface";
 
 const router = Router();
 
-router.post("/login", AuthController.credentialsLogin);
-router.post("/refresh-token", AuthController.getNewAccessToken);
-router.post("/logout", AuthController.logOut);
+router.post("/login", AuthControllers.credentialsLogin);
+router.post("/refresh-token", AuthControllers.getNewAccessToken);
+router.post("/logout", AuthControllers.logout);
+router.post(
+  "/change-password",
+  checkAuth(...Object.values(Role)),
+  AuthControllers.changePassword
+);
 router.post(
   "/reset-password",
   checkAuth(...Object.values(Role)),
-  AuthController.resetPassword
+  AuthControllers.resetPassword
+);
+
+router.post(
+  "/set-password",
+  checkAuth(...Object.values(Role)),
+  AuthControllers.setPassword
 );
 
 router.get(
@@ -33,7 +44,7 @@ router.get(
   passport.authenticate("google", {
     failureRedirect: `${envVars.FRONT_END_URL}/login?error=There is some issues with your account. Please contact with out support team!`,
   }),
-  AuthController.googleCallbackController
+  AuthControllers.googleCallbackController
 );
 
-export const AuthRoutes = router;
+export const AuthRoute = router;
