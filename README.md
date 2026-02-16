@@ -9,7 +9,7 @@ A modular, scalable, and production-ready backend for a ride-hailing platform bu
 **Base URL**
 
 ```
-demo : 
+ride-booking-system-backend-seven.vercel.app
 ```
 
 ---
@@ -139,26 +139,26 @@ src/
 **Register User**
 
 ```
-POST /api/v1/user/register
+POST ride-booking-system-backend-seven.vercel.app/api/v1/user/register
 ```
 
 **Get All Users**
 
 ```
-GET /api/v1/user/all-users
+GET ride-booking-system-backend-seven.vercel.app/api/v1/user/all-users
 Access: ADMIN, SUPER_ADMIN
 ```
 
 **Get Profile**
 
 ```
-GET /api/v1/user/me
+GET ride-booking-system-backend-seven.vercel.app/api/v1/user/me
 ```
 
 **Update User**
 
 ```
-PATCH /api/v1/user/:id
+PATCH ride-booking-system-backend-seven.vercel.app/api/v1/user/:id
 ```
 
 ---
@@ -168,26 +168,26 @@ PATCH /api/v1/user/:id
 **Login**
 
 ```
-POST /api/v1/auth/login
+POST ride-booking-system-backend-seven.vercel.app/api/v1/auth/login
 ```
 
 **Refresh Token**
 
 ```
-POST /api/v1/auth/refresh-token
+POST ride-booking-system-backend-seven.vercel.app/api/v1/auth/refresh-token
 ```
 
 **Logout**
 
 ```
-POST /api/v1/auth/logout
+POST ride-booking-system-backend-seven.vercel.app/api/v1/auth/logout
 ```
 
 **Password Management**
 
 ```
-POST /api/v1/auth/set-password
-POST /api/v1/auth/reset-password
+POST ride-booking-system-backend-seven.vercel.app/api/v1/auth/set-password
+POST ride-booking-system-backend-seven.vercel.app/api/v1/auth/reset-password
 ```
 
 ---
@@ -197,13 +197,13 @@ POST /api/v1/auth/reset-password
 **Apply Driver**
 
 ```
-POST /api/v1/driver/apply-driver
+POST ride-booking-system-backend-seven.vercel.app/api/v1/driver/apply-driver
 ```
 
 **Update Availability**
 
 ```
-PATCH /api/v1/driver/update-availability
+PATCH ride-booking-system-backend-seven.vercel.app/api/v1/driver/update-availability
 ```
 
 ---
@@ -213,31 +213,31 @@ PATCH /api/v1/driver/update-availability
 **Request Ride**
 
 ```
-POST /api/v1/ride
+POST ride-booking-system-backend-seven.vercel.app/api/v1/ride
 ```
 
 **Update Ride Status**
 
 ```
-PATCH /api/v1/ride/rideStatus/:rideId
+PATCH ride-booking-system-backend-seven.vercel.app/api/v1/ride/rideStatus/:rideId
 ```
 
 **Cancel Ride**
 
 ```
-PATCH /api/v1/ride/cancel/:rideId
+PATCH ride-booking-system-backend-seven.vercel.app/api/v1/ride/cancel/:rideId
 ```
 
 **Ride History**
 
 ```
-GET /api/v1/ride/rideHistory
+GET ride-booking-system-backend-seven.vercel.app/api/v1/ride/rideHistory
 ```
 
 **Earnings**
 
 ```
-GET /api/v1/ride/earnings
+GET ride-booking-system-backend-seven.vercel.app/api/v1/ride/earnings
 ```
 
 ---
