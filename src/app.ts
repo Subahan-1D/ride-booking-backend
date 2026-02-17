@@ -17,13 +17,20 @@ app.use(
     secret: envVars.EXPRESS_SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
-  })
+  }),
 );
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(cookieParser());
 app.use(express.json());
-app.use(cors());
+app.set("trust proxy", 1);// Trust first proxy for secure cookies
+app.use(express.urlencoded({ extended: true })); 
+app.use(
+  cors({
+    origin: envVars.FRONT_END_URL,
+    credentials: true,
+  }),
+);
 
 app.use("/api/v1", router);
 

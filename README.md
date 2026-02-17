@@ -292,7 +292,7 @@ SUPER_ADMIN_PASSWORD=01786727749
 # Google OAuth
 GOOGLE_CLIENT_SECRET=your-google-client-id
 GOOGLE_CLIENT_ID=your-google-client-password
-GOOGLE_CALLBACK_URL=http://localhost:8000/api/v1/auth/google/callback
+GOOGLE_CALLBACK_URL=https://ride-booking-system-backend-seven.vercel.app/api/v1/auth/google/callback
 #Express Session
 EXPRESS_SESSION_SECRET=your-google-session-secret
 
