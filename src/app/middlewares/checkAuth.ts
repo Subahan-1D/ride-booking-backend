@@ -18,7 +18,6 @@ export const checkAuth =
       if (!accessToken) {
         throw new AppError(403, "No Token Recieved");
       }
-
       const verifiedToken = verifyToken(
         accessToken,
         envVars.JWT_ACCESS_SECRET

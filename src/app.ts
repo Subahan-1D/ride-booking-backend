@@ -11,6 +11,7 @@ import notFound from "./app/middlewares/notFound";
 import passport from "passport";
 import expressSession from "express-session";
 import "./app/config/passport";
+import { env } from "process";
 const app = express();
 app.use(
   expressSession({
@@ -23,11 +24,11 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(cookieParser());
 app.use(express.json());
-app.set("trust proxy", 1);// Trust first proxy for secure cookies
-app.use(express.urlencoded({ extended: true })); 
+app.set("trust proxy", 1); // Trust first proxy for secure cookies
+app.use(express.urlencoded({ extended: true }));
 app.use(
   cors({
-    origin: envVars.FRONT_END_URL,
+    origin: [envVars.FRONT_END_URL, envVars.FRONT_END_URLS],
     credentials: true,
   }),
 );
