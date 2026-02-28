@@ -23,6 +23,7 @@ const loadEnvVariables = () => {
         "GOOGLE_CALLBACK_URL",
         "EXPRESS_SESSION_SECRET",
         "FRONT_END_URL",
+        "FRONT_END_URLS",
     ];
     requiredEnvVariables.forEach((key) => {
         if (!process.env[key]) {
@@ -45,6 +46,7 @@ const loadEnvVariables = () => {
         GOOGLE_CALLBACK_URL: process.env.GOOGLE_CALLBACK_URL,
         EXPRESS_SESSION_SECRET: process.env.EXPRESS_SESSION_SECRET,
         FRONT_END_URL: process.env.FRONT_END_URL,
+        FRONT_END_URLS: process.env.FRONT_END_URLS,
     };
 };
 exports.envVars = loadEnvVariables();

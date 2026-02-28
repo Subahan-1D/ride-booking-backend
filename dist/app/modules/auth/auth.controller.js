@@ -8,13 +8,13 @@ exports.AuthControllers = void 0;
 /* eslint-disable @typescript-eslint/no-explicit-any */
 const passport_1 = __importDefault(require("passport"));
 const AppError_1 = __importDefault(require("../../errorHelpers/AppError"));
-const userToken_1 = require("../../utils/userToken");
 const catchAsync_1 = require("../../utils/catchAsync");
 const setCookie_1 = require("../../utils/setCookie");
 const sendResponse_1 = require("../../utils/sendResponse");
 const http_status_codes_1 = __importDefault(require("http-status-codes"));
 const auth_service_1 = require("./auth.service");
 const env_1 = require("../../config/env");
+const userToken_1 = require("../../utils/userToken");
 const credentialsLogin = (0, catchAsync_1.catchAsync)(async (req, res, next) => {
     passport_1.default.authenticate("local", async (err, user, info) => {
         if (err) {
@@ -74,43 +74,20 @@ const logout = (0, catchAsync_1.catchAsync)(async (req, res, next) => {
         data: null,
     });
 });
-// const changePassword = catchAsync(
-//   async (req: Request, res: Response, next: NextFunction) => {
-//     const newPassword = req.body.newPassword;
-//     const oldPassword = req.body.oldPassword;
-//     const decodedToken = req.user;
-//     await AuthServices.changePassword(
-//       oldPassword,
-//       newPassword,
-//       decodedToken as JwtPayload
-//     );
-//     sendResponse(res, {
-//       success: true,
-//       statusCode: httpStatus.OK,
-//       message: "Password Changed Successfully",
-//       data: null,
-//     });
-//   }
-// );
 const googleCallbackController = (0, catchAsync_1.catchAsync)(async (req, res, next) => {
     let redirectTo = req.query.state ? req.query.state : "";
     if (redirectTo.startsWith("/")) {
         redirectTo = redirectTo.slice(1);
     }
-    // /booking => booking , => "/" => ""
     const user = req.user;
+    console.log("google callback user", user);
     if (!user) {
         throw new AppError_1.default(http_status_codes_1.default.NOT_FOUND, "User Not Found");
     }
     const tokenInfo = (0, userToken_1.createUserTokens)(user);
+    console.log("google token", tokenInfo);
     (0, setCookie_1.setAuthCookie)(res, tokenInfo);
-    // sendResponse(res, {
-    //     success: true,
-    //     statusCode: httpStatus.OK,
-    //     message: "Password Changed Successfully",
-    //     data: null,
-    // })
-    res.redirect(`${env_1.envVars.FRONT_END_URL}/${redirectTo}`);
+    res.redirect(`${env_1.envVars.FRONT_END_URL}/google-callback?token=${tokenInfo.accessToken}`);
 });
 const changePassword = (0, catchAsync_1.catchAsync)(async (req, res, next) => {
     const newPassword = req.body.newPassword;

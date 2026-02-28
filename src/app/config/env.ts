@@ -18,6 +18,7 @@ interface EnvConfig {
   EXPRESS_SESSION_SECRET: string;
   FRONT_END_URL: string;
   FRONT_END_URLS: string;
+  FRONT_END_LIVE_URL: string;
 }
 
 const loadEnvVariables = (): EnvConfig => {
@@ -38,6 +39,7 @@ const loadEnvVariables = (): EnvConfig => {
     "EXPRESS_SESSION_SECRET",
     "FRONT_END_URL",
     "FRONT_END_URLS",
+    "FRONT_END_LIVE_URL",
   ];
   requiredEnvVariables.forEach((key) => {
     if (!process.env[key]) {
@@ -61,6 +63,7 @@ const loadEnvVariables = (): EnvConfig => {
     EXPRESS_SESSION_SECRET: process.env.EXPRESS_SESSION_SECRET as string,
     FRONT_END_URL: process.env.FRONT_END_URL as string,
     FRONT_END_URLS: process.env.FRONT_END_URLS as string,
+    FRONT_END_LIVE_URL: process.env.FRONT_END_LIVE_URL as string,
   };
 };
 export const envVars = loadEnvVariables();

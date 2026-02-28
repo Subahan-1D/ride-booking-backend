@@ -28,7 +28,7 @@ app.use(express_1.default.json());
 app.set("trust proxy", 1); // Trust first proxy for secure cookies
 app.use(express_1.default.urlencoded({ extended: true }));
 app.use((0, cors_1.default)({
-    origin: env_1.envVars.FRONT_END_URL,
+    origin: [env_1.envVars.FRONT_END_URL, env_1.envVars.FRONT_END_URLS],
     credentials: true,
 }));
 app.use("/api/v1", routes_1.router);
