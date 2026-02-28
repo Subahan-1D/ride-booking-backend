@@ -116,7 +116,7 @@ const googleCallbackController = catchAsync(
     setAuthCookie(res, tokenInfo);
     
 
-    res.redirect(`${envVars.FRONT_END_URL}/google-callback?token=${tokenInfo.accessToken}`);
+    res.redirect(`${envVars.FRONT_END_LIVE_URL}/google-callback?token=${tokenInfo.accessToken}`);
   }
 );
 
